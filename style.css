@@ -70,3 +70,76 @@ body{
 .hero-right img{
     width:400px;
 }
+.achievement{
+    background:#39a9ff;
+    color:white;
+    padding:40px;
+}
+
+.achievement h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.achievement-box{
+    display:flex;
+    justify-content:space-evenly;
+    text-align:center;
+}
+.booking-section{
+    display:flex;
+    gap:30px;
+    padding:60px 80px;
+}
+
+.left-div{
+    flex:1;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+}
+
+.right-div{
+    flex:1;
+}
+.service{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:20px 0;
+}
+
+.service button{
+    background:#39a9ff;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+}
+.cart{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+.book-now{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+.book-now input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+.book-now button{
+    width:100%;
+    padding:12px;
+    background:#39a9ff;
+    color:white;
+    border:none;
+    border-radius:6px;
+}
