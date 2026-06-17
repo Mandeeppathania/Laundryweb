@@ -9,13 +9,11 @@ body{
     background:#f8f8f8;
 }
 .navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding:20px 80px;
-
-    background:white;
+    background: white;
 }
 .logo{
     font-size:28px;
@@ -26,17 +24,49 @@ body{
     list-style:none;
     gap:30px;
 }
-
 .nav-links a{
     text-decoration:none;
     color:#333;
 }
 .user{
     background:#e7f4ff;
-
     padding:10px 20px;
-
     border-radius:10px;
-
     color:#2196f3;
+}
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:70px 80px;
+}
+
+.hero-left{
+    width:50%;
+}
+.hero-left h1{
+    font-size:55px;
+    color:#2d3748;
+}
+
+.hero-left span{
+    color:#39a9ff;
+}
+.hero-left p{
+    margin:20px 0;
+    color:gray;
+    line-height:1.8;
+}
+
+.hero-left button{
+    background:#39a9ff;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.hero-right img{
+    width:400px;
 }
