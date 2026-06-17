@@ -68,52 +68,147 @@
 <section class="booking-section">
     <div class="left-div">
         <h2>Our Services</h2>
+        <p class="service-info">
+            Click on the Add To Cart Button To Add The Services To Your Cart
+        </p>
+        <hr>
         <div class="service">
-            <span>
-                Dry Cleaning - ₹200
-            </span>
-            <button>
-                Add Item
-            </button>
+            <span>🧺 Dry Cleaning &nbsp; ₹200.00</span>
+            <div class="btn-group">
+                <button
+                    class="remove-btn"
+                    onclick="removeItem('Dry Cleaning',200)">
+                    Remove Item
+                </button>
+                <button
+                    class="add-btn"
+                    onclick="addItem('Dry Cleaning',200)">
+                    Add Item
+                </button>
+            </div>
         </div>
         <div class="service">
-            <span>
-                Wash & Fold - ₹100
-            </span>
-            <button>
-                Add Item
-            </button>
+            <span>👕 Wash & Fold &nbsp; ₹100.00</span>
+            <div class="btn-group">
+                <button
+                    class="remove-btn"
+                    onclick="removeItem('Wash & Fold',100)">
+                    Remove Item
+                </button>
+                <button
+                    class="add-btn"
+                    onclick="addItem('Wash & Fold',100)">
+                    Add Item
+                </button>
+            </div>
         </div>
         <div class="service">
-            <span>
-                Ironing - ₹30
-            </span>
-            <button>
-                Add Item
-            </button>
+            <span>🧹 Ironing &nbsp; ₹30.00</span>
+            <div class="btn-group">
+                <button
+                    class="remove-btn"
+                    onclick="removeItem('Ironing',30)">
+                    Remove Item
+                </button>
+                <button
+                    class="add-btn"
+                    onclick="addItem('Ironing',30)">
+                    Add Item
+                </button>
+            </div>
         </div>
+        <div class="service">
+            <span>✨ Stain Removal &nbsp; ₹500.00</span>
+            <div class="btn-group">
+                <button
+                    class="remove-btn"
+                    onclick="removeItem('Stain Removal',500)">
+                    Remove Item
+                </button>
+                <button
+                    class="add-btn"
+                    onclick="addItem('Stain Removal',500)">
+                    Add Item
+                </button>
+            </div>
+        </div>
+        <div class="service">
+            <span>🧥 Leather & Suede Cleaning &nbsp; ₹999.00</span>
+            <div class="btn-group">
+                <button
+                    class="remove-btn"
+                    onclick="removeItem('Leather & Suede Cleaning',999)">
+                    Remove Item
+                </button>
+                <button
+                    class="add-btn"
+                    onclick="addItem('Leather & Suede Cleaning',999)">
+                    Add Item
+                </button>
+
+            </div>
+        </div>
+        <div class="service">
+            <span>👗 Wedding Dress Cleaning &nbsp; ₹2800.00</span>
+            <div class="btn-group">
+                <button
+                    class="remove-btn"
+                    onclick="removeItem('Wedding Dress Cleaning',2800)">
+                    Remove Item
+                </button>
+                <button
+                    class="add-btn"
+                    onclick="addItem('Wedding Dress Cleaning',2800)">
+                    Add Item
+                </button>
+            </div>
+        </div>
+        <hr>
+        <p class="cart-note">
+            ℹ Add the items to the cart and book now
+        </p>
     </div>
     <div class="right-div">
         <div class="cart">
             <h3>Added Items</h3>
-            <ul>
-            </ul>
-            <h4>Total : ₹0</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Service Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="cartItems">
+                </tbody>
+            </table>
+            <div class="total">
+                <strong>
+                    Total Amount :
+                    ₹<span id="total">0</span>
+                </strong>
+            </div>
         </div>
         <div class="book-now">
             <h3>Book Now</h3>
             <input
                 type="text"
+                id="name"
                 placeholder="Full Name">
             <input
                 type="email"
-                placeholder="Email">
+                id="email"
+                placeholder="Email ID">
             <input
                 type="text"
+                id="phone"
                 placeholder="Phone Number">
-            <button>
+            <button
+                class="book-btn"
+                onclick="bookService()">
                 Book Now
             </button>
+            <p id="message"></p>
         </div>
     </div>
 </section>
