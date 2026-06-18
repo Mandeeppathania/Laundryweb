@@ -115,3 +115,46 @@ function updateSerialNumbers()
             count++;
     });
 }
+function scrollToBooking()
+{
+    document
+        .getElementById("booking")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+function subscribeNewsletter()
+{
+    let name =
+        document.getElementById(
+            "subscriberName"
+        ).value;
+
+    let email =
+        document.getElementById(
+            "subscriberEmail"
+        ).value;
+
+    if(name === "" || email === "")
+    {
+        alert(
+            "Please enter your name and email."
+        );
+
+        return;
+    }
+
+    document.getElementById(
+        "subscribeMessage"
+    ).innerText =
+    "Thank you for subscribing to our newsletter!";
+
+    document.getElementById(
+        "subscriberName"
+    ).value = "";
+
+    document.getElementById(
+        "subscriberEmail"
+    ).value = "";
+}

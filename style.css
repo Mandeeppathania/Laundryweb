@@ -231,3 +231,77 @@ footer{
     margin-top:10px;
     font-size:22px;
 }
+html
+{
+    scroll-behavior: smooth;
+}
+
+#subscribeMessage
+{
+    margin-top: 15px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media screen and (max-width:768px)
+{
+    .navbar,
+    .hero,
+    .booking-section,
+    .newsletter,
+    footer
+    {
+        flex-direction: column;
+    }
+
+    .hero-left,
+    .hero-right,
+    .left-div,
+    .right-div
+    {
+        width: 100%;
+    }
+    .newsletter-right
+    {
+        flex-direction: column;
+    }
+    .quality-section
+    {
+        flex-wrap: wrap;
+    }
+    .quality-card
+    {
+        width: 45%;
+    }
+}
+@media screen and (max-width:480px)
+{
+    .hero-left h1
+    {
+        font-size: 32px;
+    }
+    .hero-right img
+    {
+        width: 220px;
+    }
+    .service
+    {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-group
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .quality-card
+    {
+        width: 100%;
+    }
+    .footer-box
+    {
+        width: 100%;
+    }
+}
