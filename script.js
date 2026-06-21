@@ -1,51 +1,56 @@
-emailjs.init("LW86rP26ry3v5GI48");
-let totalAmount = 0;
-let serialNumber = 1;
-
+emailjs.init("LW86rP26ry3v5GI48");// EmailJS public key used for sending booking confirmation emails
+let totalAmount = 0;// Stores current total bill amount
+let serialNumber = 1;// Used to generate serial numbers in cart table
+//function to add item into cart
 function addItem(serviceName, price)
 {
     let cart =
-        document.getElementById("cartItems");
+        document.getElementById("cartItems");//getting element with id:cartItems
     let row =
-        document.createElement("tr");
+        document.createElement("tr");//this will store info about the item to be added in the table creatd for cart 
     row.innerHTML = `
         <td>${serialNumber}</td>
         <td>${serviceName}</td>
         <td>₹${price}</td>
     `;
-    cart.appendChild(row);
-    totalAmount += price;
+    cart.appendChild(row);//element added into cart
+    totalAmount += price;//price of item added to provide the total amount after adding item
     document.getElementById("total")
-        .innerText = totalAmount;
+        .innerText = totalAmount;//price updated after adding
     serialNumber++;
 }
-
+// Removes the latest matching service from the cart
 function removeItem(serviceName, price)
 {
     let rows =
         document.querySelectorAll(
             "#cartItems tr"
         );
-    for(let row of rows)
+
+    // Start from last row
+    for(let i = rows.length - 1; i >= 0; i--)
     {
         let serviceCell =
-            row.children[1];
-        if(
-            serviceCell.innerText ===
-            serviceName
-        )
+            rows[i].children[1];
+        // Check if service name matches
+        if(serviceCell.innerText === serviceName)
         {
-            row.remove();
-            updateSerialNumbers();
-            totalAmount = Math.max( 0,totalAmount - price);
-            document.getElementById(
-                "total"
-            ).innerText =
-            totalAmount;
-            break;
+            rows[i].remove();
+            //deduct from total
+            totalAmount -= price;
+            if(totalAmount < 0)// Prevent negative total
+            {
+                totalAmount = 0;
+            }
+            document.getElementById("total")
+                .innerText = totalAmount;
+            updateSerialNumbers(); // Reassign serial numbers after deletion
+            return;
         }
     }
+    alert("No such item found in cart.");
 }
+// Validates booking form and sends confirmation email
 function bookService()
 {
     let name = document.getElementById("name").value.trim();
@@ -56,26 +61,26 @@ function bookService()
         alert("Please add at least one service.");
         return;
     }
-    if(name === "" || email === "" || phone === "")
+    if(name === "" || email === "" || phone === "")// Check if any input is empty
     {
-        alert("Please fill all fields.");
+        alert("Please fill all fields.");//provide the alert
         return;
     }
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;//cheking for valid email
 
     if(!emailPattern.test(email))
     {
-        alert("Please enter a valid email address.");
+        alert("Please enter a valid email address.");//alert for email
         return;
     }
-    if(phone.length !== 10 || isNaN(phone))
+    if(phone.length !== 10 || isNaN(phone))//check for length of number it should have 10 digits
     {
-        alert("Please enter a valid 10-digit phone number.");
+        alert("Please enter a valid 10-digit phone number.");//alert
         return;
     }
     emailjs.send(
-        "service_4cbu9nr",
-        "template_k4812ba",
+        "service_4cbu9nr",//service id from email,js
+        "template_k4812ba",// emplate id from email.js
         {
             user_name: name,
             user_email: email,
@@ -83,7 +88,7 @@ function bookService()
             total_amount: totalAmount
         }
     )
-    .then(function(response)
+    .then(function(response)//this will be sent to the user
     {
         document.getElementById("message").innerHTML =
         "Thank you for booking the service. We will get back to you soon!";
@@ -96,12 +101,13 @@ function bookService()
         document.getElementById("total").innerText = "0";
         console.log("Email sent successfully", response);
     })
-    .catch(function(error)
+    .catch(function(error)//for any error
     {
         console.log("EmailJS Error:", error);
         alert("Failed to send email. Please try again.");
     });
 }
+// Updates serial numbers after item deletion
 function updateSerialNumbers()
 {
     let rows =
@@ -115,6 +121,7 @@ function updateSerialNumbers()
             count++;
     });
 }
+// Takes the user directly to the booking section
 function scrollToBooking()
 {
     document
@@ -124,27 +131,44 @@ function scrollToBooking()
         });
 }
 
+// Handles newsletter subscription
 function subscribeNewsletter()
 {
     let name =
         document.getElementById(
             "subscriberName"
-        ).value;
-
+        ).value.trim();
     let email =
         document.getElementById(
             "subscriberEmail"
-        ).value;
-
-    if(name === "" || email === "")
+        ).value.trim();
+    // Check if fields are empty
+    if(name === "")
     {
         alert(
-            "Please enter your name and email."
+            "Please enter your name."
         );
 
         return;
     }
-
+    if(email === "")
+    {
+        alert(
+            "Please enter your email."
+        );
+        return;
+    }
+    // Basic email validation
+    if(
+        !email.includes("@") ||
+        !email.includes(".")
+    )
+    {
+        alert(
+            "Please enter a valid email address."
+        );
+        return;
+    }
     document.getElementById(
         "subscribeMessage"
     ).innerText =
